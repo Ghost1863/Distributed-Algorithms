@@ -1,0 +1,207 @@
+verification result:
+spin -a  matmul_custom.pml
+ltl safety_bounded: [] ((ready_cols<=4))
+ltl liveness_done: <> ((done==1))
+ltl done_after_all: [] ((! ((done==1))) || ((ready_cols==4)))
+ltl progress_collect: [] ((! ((ready_cols<4))) || (<> ((ready_cols==4))))
+  the model contains 4 never claims: progress_collect, done_after_all, liveness_done, safety_bounded
+  only one claim is used in a verification run
+  choose which one with ./pan -a -N name (defaults to -N safety_bounded)
+  or use e.g.: spin -search -ltl safety_bounded matmul_custom.pml
+gcc -DMEMLIM=1024 -O2 -DXUSAFE -w -o pan pan.c
+./pan -m10000  -a -f -N safety_bounded
+Pid: 8130
+pan: ltl formula safety_bounded
+
+(Spin Version 6.5.2 -- 18 September 2025)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (safety_bounded)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness enabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 340 byte, depth reached 597, errors: 0
+    23520 states, stored
+     1338 states, matched
+    24858 transitions (= stored+matched)
+       14 atomic steps
+hash conflicts:         3 (resolved)
+
+Stats on memory usage (in Megabytes):
+    8.254	equivalent memory usage for states (stored*(State-vector + overhead))
+    7.400	actual memory usage for states (compression: 89.64%)
+         	state-vector as stored = 302 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  135.858	total actual memory usage
+
+
+unreached in proctype Worker
+	(0 of 63 states)
+unreached in init
+	matmul_custom.pml:155, state 68, "task[rid]!l"
+	matmul_custom.pml:155, state 69, "l = (l+1)"
+	(2 of 149 states)
+unreached in claim safety_bounded
+	_spin_nvr.tmp:8, state 10, "-end-"
+	(1 of 10 states)
+
+pan: elapsed time 0.02 seconds
+No errors found -- did you verify all claims?
+spin -a  matmul_custom.pml
+ltl safety_bounded: [] ((ready_cols<=4))
+ltl liveness_done: <> ((done==1))
+ltl done_after_all: [] ((! ((done==1))) || ((ready_cols==4)))
+ltl progress_collect: [] ((! ((ready_cols<4))) || (<> ((ready_cols==4))))
+  the model contains 4 never claims: progress_collect, done_after_all, liveness_done, safety_bounded
+  only one claim is used in a verification run
+  choose which one with ./pan -a -N name (defaults to -N safety_bounded)
+  or use e.g.: spin -search -ltl safety_bounded matmul_custom.pml
+gcc -DMEMLIM=1024 -O2 -DXUSAFE -w -o pan pan.c
+./pan -m10000  -a -f -N liveness_done
+Pid: 8195
+pan: ltl formula liveness_done
+
+(Spin Version 6.5.2 -- 18 September 2025)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (liveness_done)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness enabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 340 byte, depth reached 594, errors: 0
+    23331 states, stored (97723 visited)
+     9469 states, matched
+   107192 transitions (= visited+matched)
+       28 atomic steps
+hash conflicts:        40 (resolved)
+
+Stats on memory usage (in Megabytes):
+    8.188	equivalent memory usage for states (stored*(State-vector + overhead))
+    7.303	actual memory usage for states (compression: 89.19%)
+         	state-vector as stored = 300 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  135.761	total actual memory usage
+
+
+unreached in proctype Worker
+	(0 of 63 states)
+unreached in init
+	matmul_custom.pml:155, state 68, "task[rid]!l"
+	matmul_custom.pml:155, state 69, "l = (l+1)"
+	(2 of 149 states)
+unreached in claim liveness_done
+	_spin_nvr.tmp:15, state 6, "-end-"
+	(1 of 6 states)
+
+pan: elapsed time 0.05 seconds
+No errors found -- did you verify all claims?
+spin -a  matmul_custom.pml
+ltl safety_bounded: [] ((ready_cols<=4))
+ltl liveness_done: <> ((done==1))
+ltl done_after_all: [] ((! ((done==1))) || ((ready_cols==4)))
+ltl progress_collect: [] ((! ((ready_cols<4))) || (<> ((ready_cols==4))))
+  the model contains 4 never claims: progress_collect, done_after_all, liveness_done, safety_bounded
+  only one claim is used in a verification run
+  choose which one with ./pan -a -N name (defaults to -N safety_bounded)
+  or use e.g.: spin -search -ltl safety_bounded matmul_custom.pml
+gcc -DMEMLIM=1024 -O2 -DXUSAFE -w -o pan pan.c
+./pan -m10000  -a -f -N done_after_all
+Pid: 8248
+pan: ltl formula done_after_all
+
+(Spin Version 6.5.2 -- 18 September 2025)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (done_after_all)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness enabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 340 byte, depth reached 597, errors: 0
+    23520 states, stored
+     1338 states, matched
+    24858 transitions (= stored+matched)
+       14 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    8.254	equivalent memory usage for states (stored*(State-vector + overhead))
+    7.400	actual memory usage for states (compression: 89.64%)
+         	state-vector as stored = 302 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  135.858	total actual memory usage
+
+
+unreached in proctype Worker
+	(0 of 63 states)
+unreached in init
+	matmul_custom.pml:155, state 68, "task[rid]!l"
+	matmul_custom.pml:155, state 69, "l = (l+1)"
+	(2 of 149 states)
+unreached in claim done_after_all
+	_spin_nvr.tmp:24, state 10, "-end-"
+	(1 of 10 states)
+
+pan: elapsed time 0.02 seconds
+No errors found -- did you verify all claims?
+spin -a  matmul_custom.pml
+ltl safety_bounded: [] ((ready_cols<=4))
+ltl liveness_done: <> ((done==1))
+ltl done_after_all: [] ((! ((done==1))) || ((ready_cols==4)))
+ltl progress_collect: [] ((! ((ready_cols<4))) || (<> ((ready_cols==4))))
+  the model contains 4 never claims: progress_collect, done_after_all, liveness_done, safety_bounded
+  only one claim is used in a verification run
+  choose which one with ./pan -a -N name (defaults to -N safety_bounded)
+  or use e.g.: spin -search -ltl safety_bounded matmul_custom.pml
+gcc -DMEMLIM=1024 -O2 -DXUSAFE -w -o pan pan.c
+./pan -m10000  -a -f -N progress_collect
+Pid: 8293
+pan: ltl formula progress_collect
+
+(Spin Version 6.5.2 -- 18 September 2025)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (progress_collect)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness enabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 340 byte, depth reached 597, errors: 0
+    43774 states, stored (131713 visited)
+    32594 states, matched
+   164307 transitions (= visited+matched)
+       56 atomic steps
+hash conflicts:        79 (resolved)
+
+Stats on memory usage (in Megabytes):
+   15.363	equivalent memory usage for states (stored*(State-vector + overhead))
+   13.552	actual memory usage for states (compression: 88.22%)
+         	state-vector as stored = 297 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  142.011	total actual memory usage
+
+
+unreached in proctype Worker
+	(0 of 63 states)
+unreached in init
+	matmul_custom.pml:155, state 68, "task[rid]!l"
+	matmul_custom.pml:155, state 69, "l = (l+1)"
+	(2 of 149 states)
+unreached in claim progress_collect
+	_spin_nvr.tmp:35, state 13, "-end-"
+	(1 of 13 states)
+
+pan: elapsed time 0.1 seconds
+No errors found -- did you verify all claims?
+
+
