@@ -1,4 +1,4 @@
-\documentclass[tikz,border=5pt]{standalone}
+$\documentclass[tikz,border=5pt]{standalone}
 \usepackage{tikz}
 \usetikzlibrary{automata, positioning, arrows.meta}
 
@@ -26,4 +26,4 @@
 
 \end{tikzpicture}
 
-\end{document}
+\end{document}$
