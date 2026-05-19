@@ -1,5 +1,5 @@
 #define N    4      
-#define P    4    
+#define P    2   
 #define STOP 0     
 
 // Тип столбец: массив длины N в одном сообщении 
@@ -135,16 +135,16 @@ init {
     :: (k < N) ->
         result ? rid, rj, col;
         // Раскладываем столбец col в (rj-1)-й столбец C 
+		if
+        :: (l <= N) -> task[rid] ! l; l++
+        :: else     -> skip
+        fi
         i = 0;
         do
         :: (i < N) -> C[i*N + (rj - 1)] = col.v[i]; i++
         :: (i == N) -> break
         od;
         k++;
-        if
-        :: (l <= N) -> task[rid] ! l; l++
-        :: else     -> skip
-        fi
     :: (k == N) -> break
     od;
 
